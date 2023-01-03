@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/default_layout}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<link rel="stylesheet" type="text/css" href="/css/board.css">
+<body>
+	<main layout:fragment="content" class="top-padding">
+		<div class="page-top">
+			<div class="page-top-inner-wrap">
+				<h1 class="page-title">게시판</h1>
+			</div>
+		</div>
+
+		<div class="wrap">
+			<div class="cs-body">
+				<div>
+					<ul class="cs-2depth">
+						<li>
+							<a th:href="@{/board}"><button>전체</button></a>
+						</li>
+						<li>
+							<a th:href="@{/board_like}" ><button>추천게시판</button></a>
+						</li>
+						<li class="cs-2depth-on">
+							<a th:href="@{board_normal}"><button>자유게시판</button></a>
+						</li>
+					</ul>
+					<div class="table02-wrap">
+						<form class="board-search">
+							<fieldset>
+								<label> <input type="text" placeholder="검색어를 입력하세요.">
+								</label>
+								<button type="button" class="board-search-btn">검색</button>
+							</fieldset>
+						</form>
+
+						<table class="board-list-table">
+							<thead>
+								<tr>
+									<th>구분</th>
+									<th>제목</th>
+									<th>작성자</th>
+									<th>등록일</th>
+								</tr>
+							</thead>
+							<tbody>
+							<tr th:if="${#lists.isEmpty(boardPage.boardList)}">
+				<td colspan="5">작성된 게시글이 존재하지 않습니다.</td>
+				</tr>
+								<tr th:if="${!#lists.isEmpty(boardPage.boardList)}"
+								th:each="boardVO : ${boardPage.boardList}">
+									<td th:text="${boardVO.boardCategory} == 0 ? '자유게시판' : '추천게시판' "><a></a></td>
+									<td><a th:text="${boardVO.boardTitle}" th:href="@{/read(boardNum=${boardVO.boardNum})}"></a></td>
+									<td th:text="${boardVO.boardWriter}"><a></a></td>
+									<td th:text="${#dates.format(boardVO.boardDate,'yyyy-MM-dd')}"><a></a></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="paging-type02">
+						<a  th:each="p : ${#numbers.sequence(boardPage.startPage, boardPage.endPage)}" id="page" th:text="${p}" th:href="@{/board_normal(page=${p})}" href="#" class="on"><img
+							src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAAXNSR0IArs4c6QAAAPBJREFUSA1jYBgFoyEwMkJg+fLlCuT6lIlYjf///w9bs2aNKrHqkdURbcm/f/+W/fr1K3DZsmXayAYQw2YkRhFMzcaNG8W/fPkSy8TEtDcyMvI8TJwQTbRPQAb5+/u/ZGRkXAAMOkdgHJkTMhwmT5IlIE1RUVFvODk55wGDzxNmCCGaZEtABn779s0EGGTfCRkOk2eBMYihgcHEuGrVKs+/f//K8vDwTCZGD0gN0REPtIAJGA9+QFpYSkpqqaOj4w9iLWEmVqGmpmY4MB641NXVl1pbW/8iVh9IHUnBBfTBMhMTkz+kWDCqdjQEhkEIAADVzUfIdyQB3wAAAABJRU5ErkJggg=="
+							alt="다음 10개 페이지"></a>
+					</div>
+					<a  th:href="@{/writeForm}" ><button th:unless="${session.loginId == null}" class="write">글쓰기</button></a>
+				</div>
+			</div>
+		</div>
+	</main>
+</body>
+</html>

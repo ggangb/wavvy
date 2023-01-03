@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/default_layout}">
+<head>
+
+
+</head>
+
+<body>
+
+
+	<div layout:fragment="content" class="">
+		<div class="member">
+			<div class="join member-layout">
+
+				<fieldset>
+					<div class="common-box">
+						<table class="edit-form">
+							<colgroup>
+								<col>
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th>아이디</th>
+									<td><label for="user-id"> <input type="text"
+											placeholder="" class="input-style01 isPhoneEvent isPhone"
+											id="user-id" name="userId" maxlength="25"
+											th:value="${userInfo.userId}" readonly="readonly">
+									</label></td>
+								</tr>
+								<tr style="display: none;">
+									<th>비밀번호</th>
+									<td><label for="user-password"> <input type="text"
+											placeholder="변경할 비밀번호를 입력해주세요"
+											class="input-style01 isPhoneEvent isPhone" id="user-phone"
+											name="userPw" maxlength="25" value="">
+									</label></td>
+								</tr>
+								<tr>
+									<th>휴대폰 번호</th>
+									<td><label for="user-phone"> <input type="text"
+											placeholder="휴대폰 번호를 입력해주세요"
+											class="input-style01 isPhoneEvent isPhone" id="user-phone"
+											name="userPhoneNum" maxlength="13"
+											th:value="${userInfo.userPhoneNum}" readonly="readonly">
+									</label></td>
+								</tr>
+								<tr>
+									<th>이메일 주소</th>
+									<td><label for="user-email"> <input type="text"
+											placeholder="이메일 주소를 입력해주세요." class="input-style01"
+											name="userEmail" id="user-email" maxlength="200"
+											th:value="${userInfo.userEmail}" readonly="readonly">
+									</label></td>
+								</tr>
+							</tbody>
+						</table>
+
+						<ul class="btn-box-multiple">
+							<li>
+								<div class="btn-purple-line">
+									<a th:href="@{/}">취소</a>
+								</div>
+							</li>
+							<li>
+								<div class="btn-purple">
+
+									<a th:href="@{/userupdateForm(userNum=${userInfo.userNum})}"
+										type="button">수정</a>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</fieldset>
+
+			</div>
+			<div class="edit-leave-wrap">
+				<a th:href="@{/userdelete(userNum=${userInfo.userNum})}" type="button"
+					class="edit-leave-txt">회원탈퇴</a>
+			</div>
+		</div>
+	</div>
+
+
+
+</body>
+</html>

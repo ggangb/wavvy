@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/default_layout}">
+<head>
+<meta charset="UTF-8">
+<title>웨이비 (Wavvy)</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<main id="contents" class="main">
+			<div>
+				<section>
+				<div class="main-banner">
+					<div class="container">
+							<div class="swiper-container swiper-sync">
+								<div class="swiper-wrapper">
+									<div class="swiper-slide">
+										<div class="card-image">
+											<img
+												src="https://img.wavve.com/banner/pooq/2021/20210826_banner_170913.jpg"
+												alt="Image Slider">
+										</div>
+									</div>
+									<div class="swiper-slide">
+										<div class="card-image">
+											<img
+												src="https://img.wavve.com/banner/pooq/2022/20220803_banner_214730.jpg"
+												alt="Image Slider">
+										</div>
+									</div>
+									<div class="swiper-slide">
+										<div class="card-image">
+											<img
+												src="https://img.wavve.com/banner/pooq/2022/20220809_banner_190353.jpg"
+												alt="Image Slider">
+										</div>
+									</div>
+									<div class="swiper-slide">
+										<div class="card-image">
+											<img
+												src="https://img.wavve.com/banner/pooq/2022/20220705_banner_183325.jpg"
+												alt="Image Slider">
+										</div>
+									</div>
+									<div class="swiper-slide">
+										<div class="card-image">
+											<img
+												src="https://img.wavve.com/banner/pooq/2022/20220812_banner_120443.jpg"
+												alt="Image Slider">
+										</div>
+									</div>
+									<div class="swiper-slide">
+										<div class="card-image">
+											<img
+												src="https://img.wavve.com/banner/pooq/2021/20211015_banner_114248.jpg"
+												alt="Image Slider">
+										</div>
+									</div>
+									<div class="swiper-slide">
+										<div class="card-image">
+											<img
+												src="https://img.wavve.com/banner/pooq/2022/20220812_banner_190848.jpg"
+												alt="Image Slider">
+										</div>
+									</div>
+								</div>
+								<!-- Add Pagination -->
+								<div class="swiper-pagination"></div>
+								<!-- Add Scrollbar -->
+								<div class="swiper-button-next">
+									<i class="fas fa-chevron-circle-right arrow-icon"></i>
+								</div>
+								<div class="swiper-button-prev">
+									<i class="fas fa-chevron-circle-left arrow-icon"></i>
+								</div>
+							</div>
+							</div>
+					</div>
+				</section>
+
+				<section>
+					<div class="multisection_index">
+						<div class="title" id="hot">
+							<h1 >
+								추천 프로그램<a th:href="@{/moreContent(contentCategory=popularity)}" class="moreview">더보기</a>
+							</h1>
+						</div>
+						<div>
+							<div class="swiper mySwiper">
+								<div class="swiper-wrapper">
+					
+									<div th:if="${contentVO.contentCategory.equals('popularity')} or ${#strings.contains(contentVO.contentCategory,'popularity')}" th:each="contentVO, p : ${mainContent.contentList}"  class="swiper-slide">
+
+										<a th:href="@{/contentRead(contentEp=${contentVO.contentEp}, contentTitle=${contentVO.contentTitle}, contentNum=${contentVO.contentNum})}"><img
+											th:src="${contentVO.contentImg}"></a>
+
+									</div>
+
+								</div>
+								<div class="swiper-button-next"></div>
+								<div class="swiper-button-prev"></div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<div class="multisection_index">
+						<div class="title" id="drama" >
+							<h1>
+								드라마<a th:href="@{/moreContent(contentCategory='drama')}" class="moreview">더보기</a>
+							</h1>
+						</div>
+						<div>
+							<div class="swiper mySwiper0">
+								<div class="swiper-wrapper">
+									<div th:if="${#strings.contains(contentVO.contentCategory,'drama')}" th:each="contentVO, i : ${mainContent.contentList}" class="swiper-slide">
+										<a th:href="@{/contentRead(contentEp=${contentVO.contentEp}, contentTitle=${contentVO.contentTitle}, contentNum=${contentVO.contentNum})}"><img
+											th:src="${contentVO.contentImg}"></a>
+									</div>
+								</div>
+								<div class="swiper-button-next"></div>
+								<div class="swiper-button-prev"></div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<div class="multisection_index">
+						<div class="title" id="entertainment">
+							<h1>
+								예능<a  th:href="@{/moreContent(contentCategory='entertainment')}" class="moreview">더보기</a>
+							</h1>
+						</div>
+						<div>
+							<div class="swiper mySwiper1">
+								<div class="swiper-wrapper">
+									
+									<div th:if="${#strings.contains(contentVO.contentCategory,'entertainment')}" th:each="contentVO, i : ${mainContent.contentList}"  class="swiper-slide">
+
+										<a th:href="@{/contentRead(contentEp=${contentVO.contentEp}, contentTitle=${contentVO.contentTitle}, contentNum=${contentVO.contentNum})}"><img
+											th:src="${contentVO.contentImg}"></a>
+
+									</div>
+								</div>
+								<div class="swiper-button-next"></div>
+								<div class="swiper-button-prev"></div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<div class="multisection_index">
+						<div class="title" id="movie">
+							<h1>
+								영화<a th:href="@{/moreContent(contentCategory='movie')}" class="moreview">더보기</a>
+							</h1>
+						</div>
+						<div class=>
+							<div class="swiper mySwiper3">
+								<div class="swiper-wrapper">
+									<div th:if="${contentVO.contentCategory.equals('movie')}" th:each="contentVO, i : ${mainContent.contentList}"  class="swiper-slide">
+
+										<a th:href="@{/contentRead(contentEp=${contentVO.contentEp}, contentTitle=${contentVO.contentTitle}, contentNum=${contentVO.contentNum})}"><img
+											th:src="${contentVO.contentImg}"></a>
+
+									</div>
+								</div>
+								<div class="swiper-button-next"></div>
+								<div class="swiper-button-prev"></div>
+							</div>
+						</div>
+					</div>
+				</section>
+				
+				<section>
+					<div class="multisection_index">
+						<div class="title" id="movie_plus">
+							<h1>
+								영화 플러스<a th:href="@{/moreContent(contentCategory='moviePlus')}" class="moreview">더보기</a>
+							</h1>
+						</div>
+						<div class=>
+							<div class="swiper mySwiper3">
+								<div class="swiper-wrapper">
+									<div th:if="${contentVO.contentCategory.equals('moviePlus')}" th:each="contentVO, i : ${mainContent.contentList}"  class="swiper-slide">
+
+										<a th:href="@{/contentRead(contentEp=${contentVO.contentEp}, contentTitle=${contentVO.contentTitle}, contentNum=${contentVO.contentNum})}"><img
+											th:src="${contentVO.contentImg}"></a>
+
+									</div>
+								</div>
+								<div class="swiper-button-next"></div>
+								<div class="swiper-button-prev"></div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+
+				<section>
+					<div class="multisection_index">
+						<div class="title" id="series">
+							<h1>
+								해외시리즈<a th:href="@{/moreContent(contentCategory='sereis')}" class="moreview">더보기</a>
+							</h1>
+						</div>
+						<div class=>
+							<div class="swiper mySwiper2">
+								<div class="swiper-wrapper">
+									<div th:if="${#strings.contains(contentVO.contentCategory,'sereis')}" th:each="contentVO, i : ${mainContent.contentList}"  class="swiper-slide">
+
+										<a th:href="@{/contentRead(contentEp=${contentVO.contentEp}, contentTitle=${contentVO.contentTitle}, contentNum=${contentVO.contentNum})}"><img
+											th:src="${contentVO.contentImg}"></a>
+
+									</div>
+								</div>
+								<div class="swiper-button-next"></div>
+								<div class="swiper-button-prev"></div>
+							</div>
+						</div>
+					</div>
+				</section>
+				
+				<section>
+					<div class="multisection_index">
+						<div class="title" id="original">
+							<h1>
+								ORIGINAL<a th:href="@{/moreContent(contentCategory='original')}" class="moreview">더보기</a>
+							</h1>
+						</div>
+						<div class=>
+							<div class="swiper mySwiper2">
+								<div class="swiper-wrapper">
+									<div th:if="${contentVO.contentCategory.equals('original')}" th:each="contentVO, i : ${mainContent.contentList}"  class="swiper-slide">
+
+										<a th:href="@{/contentRead(contentEp=${contentVO.contentEp}, contentTitle=${contentVO.contentTitle}, contentNum=${contentVO.contentNum})}"><img
+											th:src="${contentVO.contentImg}"></a>
+
+									</div>
+								</div>
+								<div class="swiper-button-next"></div>
+								<div class="swiper-button-prev"></div>
+							</div>
+						</div>
+					</div>
+				</section>
+				
+				<section>
+					<div class="multisection_index">
+						<div class="title" id="classic">
+							<h1>
+								CLASSIC<a th:href="@{/moreContent(contentCategory='classic')}" class="moreview">더보기</a>
+							</h1>
+						</div>
+						<div class=>
+							<div class="swiper mySwiper2">
+								<div class="swiper-wrapper">
+								<div th:if="${#strings.contains(contentVO.contentCategory,'classic')}" th:each="contentVO, i : ${mainContent.contentList}"  class="swiper-slide">
+
+										<a th:href="@{/contentRead(contentEp=${contentVO.contentEp}, contentTitle=${contentVO.contentTitle}, contentNum=${contentVO.contentNum})}"><img
+											th:src="${contentVO.contentImg}"></a>
+
+									</div>
+								</div>
+								<div class="swiper-button-next"></div>
+								<div class="swiper-button-prev"></div>
+							</div>
+						</div>
+					</div>
+				</section>
+				
+
+				
+				
+				
+
+			</div>
+		</main>
+	<script src="/js/main.js"></script>
+</div>
+
+</body>
+</html>

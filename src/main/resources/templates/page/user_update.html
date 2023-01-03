@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/default_layout}">
+<head>
+
+</head>
+
+<body>
+
+
+	<div layout:fragment="content" class="">
+		<div class="member">
+			<div class="join member-layout">
+				<form action="userupdate" method="post">
+					<fieldset>
+						<div class="common-box">
+							<table class="edit-form">
+								<colgroup>
+									<col>
+									<col>
+								</colgroup>
+								<tbody>
+									<tr>
+										<th>아이디</th>
+										<td><label for="user-id"> <input type="text"
+												placeholder="" class="input-style01 isPhoneEvent isPhone"
+												id="user-id" name="userId" maxlength="13"
+												th:value="${original.userId}" readonly="readonly">
+										</label></td>
+									</tr>
+									<tr>
+										<th>비밀번호</th>
+										<td><label for="user-password"> <input
+												type="text" placeholder="변경할 비밀번호를 입력해주세요"
+												class="input-style01 isPhoneEvent isPhone" id="user-phone"
+												name="userPw" maxlength="25" value="">
+										</label></td>
+									</tr>
+									<tr>
+										<th>휴대폰 번호</th>
+										<td><label for="user-phone"> <input type="text"
+												placeholder="휴대폰 번호를 입력해주세요"
+												class="input-style01 isPhoneEvent isPhone" id="user-phone"
+												name="userPhoneNum" maxlength="13"
+												>
+										</label></td>
+									</tr>
+									<tr>
+										<th>이메일 주소</th>
+										<td><label for="user-email"> <input type="text"
+												placeholder="이메일 주소를 입력해주세요." class="input-style01"
+												name="userEmail" id="user-email" maxlength="200"
+												th:value="${original.userEmail}">
+										</label></td>
+									</tr>
+								</tbody>
+							</table>
+
+							<ul class="btn-box-multiple">
+								<li>
+									<div class="btn-purple-line">
+										<a th:href="@{/}">취소</a>
+									</div>
+								</li>
+								<li>
+									<div class="btn-purple">
+										<input type="hidden" th:value="${original.userNum}"
+											name="userNum" id="userNum"> <input type="submit"
+											value="수정">
+									</div>
+								</li>
+							</ul>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+
+		</div>
+	</div>
+
+
+
+</body>
+</html>

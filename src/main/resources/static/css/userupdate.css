@@ -1,0 +1,172 @@
+@charset "UTF-8";
+
+.mywavve-info-body {
+   padding: 40px 0;
+}
+
+.wrap2 {
+   width: 1240px;
+   margin: 0 auto;
+   position: relative;
+}
+
+.ch-my-pw {
+   width: 410px;
+   margin: 260px auto;
+   text-align: center;
+}
+
+.ch-my-pw .mywavve-info-text01 {
+   margin-bottom: 40px;
+}
+
+.mywavve-info-text01 {
+   font-size: 22px;
+   line-height: 1.45em;
+   color: #a5a5a5;
+}
+
+.ch-my-pw input[type="password"] {
+   font-size: 16px;
+   color: #a5a5a5;
+   border-radius: 6px;
+   background-color: #2f2f2f;
+   border: none;
+   width: 300px;
+   height: 54px;
+   padding-left: 20px;
+}
+
+.ch-my-pw input[type="submit"] {
+   appearance: none;
+   border: none;
+}
+
+.ch-pw-btn {
+   margin-left: 10px;
+   padding: 0 30px;
+   height: 46px;
+   line-height: 46px;
+   border-radius: 23px;
+   background-color: #1351f9;
+   font-weight: 700;
+   text-align: center;
+   color: #fff;
+}
+
+.edit-form {
+   width: 100%;
+   margin-bottom: 20px;
+}
+
+.edit-form col:first-child {
+   width: 140px;
+}
+
+.edit-form tr {
+   display: flex;
+   align-items: center;
+   padding: 12px 0;
+}
+
+.edit-form th {
+   width: 140px;
+   text-align: left;
+   font-size: 14px;
+   font-weight: 700;
+}
+
+.edit-form td {
+   flex: 1;
+   font-size: 16px;
+}
+
+.edit-form th, .edit-form td {
+   vertical-align: top;
+   color: #a5a5a5;
+   line-height: 24px;
+}
+
+.txt-modify-name {
+   display: block;
+   margin-bottom: 12px;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   word-wrap: break-word;
+}
+
+.txt-edit {
+   display: inline-block;
+   padding: 5px 0;
+   font-size: 16px;
+   line-height: 24px;
+   color: #fff;
+   background:
+      url(https://member.wavve.com/images/member/icons-skip-right-w.png)
+      no-repeat right center;
+   padding-right: 15px;
+}
+
+ul.btn-box-multiple {
+   width: 100%;
+   overflow: hidden;
+   padding-top: 40px;
+}
+
+ul.btn-box-multiple li:first-child {
+   margin-right: 8px;
+}
+
+ul.btn-box-multiple li {
+   width: calc(50% - 4px);
+   float: left;
+}
+
+.btn-purple-line {
+   text-align: center;
+}
+
+.btn-purple-line>a {
+   display: block;
+   border-radius: 30px;
+   height: 58px;
+   line-height: 60px;
+   font-size: 18px;
+   color: #fff;
+   text-align: center;
+   background-color: #525252;
+}
+
+.btn-purple {
+   text-align: center;
+}
+
+.btn-purple>input {
+   display: block;
+   background: #1351f9;
+   border-radius: 30px;
+   height: 60px;
+   line-height: 60px;
+   font-size: 18px;
+   color: #fff;
+   text-align: center;
+   width: 220px;
+   cursor: pointer;
+}
+
+.edit-leave-wrap {
+   width: 560px;
+   text-align: right;
+   margin: -70px auto 80px;
+}
+
+.edit-leave-txt {
+   font-size: 16px;
+   color: #a5a5a5;
+   display: inline-block;
+   background:
+      url(https://member.wavve.com/images/member/icons-skip-right-w.png)
+      no-repeat right top 3px;
+   padding: 5px 15px 5px 0;
+   font-weight: 550;
+}

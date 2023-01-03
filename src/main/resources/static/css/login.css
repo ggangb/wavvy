@@ -1,0 +1,422 @@
+@charset "UTF-8";
+
+
+.join-sns-box h2 {
+	display: block;
+	margin-block-start: 0.83em;
+	margin-block-end: 0.83em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+}
+
+.login {
+	width: 560px;
+}
+
+
+.member-layout {
+	margin: 80px auto;
+	padding: 40px 0;
+	overflow: hidden;
+	background: #252525;
+}
+
+.member-layout h1 {
+	margin: 0 0 40px;
+	font-weight: 400;
+	font-size: 32px;
+	text-align: center;
+	color: #fff;
+}
+
+.join-sns-box, .sns-box {
+	float: left;
+	width: 560px;
+	padding: 0 40px;
+}
+
+.login-box-hd.wavve-hd {
+	margin-bottom: 28px;
+}
+
+fieldset {
+	display: block;
+	margin-inline-start: 2px;
+	margin-inline-end: 2px;
+	padding-block-start: 0.35em;
+	padding-inline-start: 0.75em;
+	padding-inline-end: 0.75em;
+	padding-block-end: 0.625em;
+	min-inline-size: min-content;
+	border-color: transparent;
+}
+
+caption, legend {
+	overflow: hidden;
+	visibility: hidden;
+	font-size: 0;
+	line-height: 0;
+	height: 0;
+	width: 0;
+	text-indent: -999em;
+}
+
+legend {
+	display: block;
+	padding-inline-start: 2px;
+	padding-inline-end: 2px;
+	border-width: initial;
+	border-style: none;
+	border-color: initial;
+	border-image: initial;
+}
+
+.login ul.input-wrap01 li {
+	margin: 0 0 10px;
+}
+
+/* display: list-item - li 앞 동그라미 바꾸기위한 준비과정 */
+li {
+	display: list-item;
+	text-align: -webkit-match-parent;
+}
+
+button, label {
+	cursor: pointer;
+}
+
+button, input, textarea {
+	background: transparent;
+	border:none;
+	color:white;
+}
+
+label {
+	margin: 0;
+	padding: 0;
+	vertical-align: middle;
+}
+
+.member-layout input[type=password].input-style01, .member-layout input[type=text].input-style01
+	{
+	width: 100%;
+	font-size: 15px;
+	height: 53px;
+	color: #fff;
+	background-color: #2f2f2f;
+	border: 0;
+}
+
+input[type=password], input[type=tel], input[type=text], textarea {
+	appearance: none;
+	border-radius: 5px;
+	padding: 0 20px;
+	margin: 0;
+}
+
+input[type=tel], input[type=text], pre, textarea {
+	font-weight: 400;
+}
+
+input {
+	writing-mode: horizontal-tb !important;
+	text-rendering: auto;
+	letter-spacing: normal;
+	word-spacing: normal;
+	line-height: normal;
+	text-transform: none;
+	text-indent: 0px;
+	text-shadow: none;
+	display: inline-block;
+	text-align: start;
+	cursor: text;
+}
+
+/* 패스워드 */
+.login ul.input-wrap01 li:last-child {
+	margin: 0;
+}
+
+/* 체크박스 */
+.login ul.checkbox-wrap01 {
+	margin: 14px 0 33px;
+	overflow: hidden;
+}
+
+.login ul.checkbox-wrap01 li {
+	float: left;
+	margin-right: 15px;
+	font-size: 0;
+}
+
+input[type="checkbox"] {
+	cursor: default;
+	display: none;
+}
+
+.join-sns-box .check-style-dark input[type=checkbox]+label {
+	color: #a5a5a5;
+}
+
+.login ul.checkbox-wrap01 label {
+	padding: 10px 0;
+}
+
+.check-style input[type=checkbox]+label {
+	position: relative;
+	letter-spacing: -.2px;
+	font-size: 13px;
+}
+
+.member-layout input[type=checkbox].check-blue-dark+label:before {
+	border: 1px solid #a5a5a5;
+}
+
+.check-style input[type=checkbox].check-blue-dark+label:before {
+	vertical-align: middle;
+}
+
+.check-style input[type=checkbox]+label:before {
+	content: " ";
+	display: inline-block;
+	width: 21px;
+	height: 21px;
+	margin-right: 8px;
+}
+
+.check-style input[type=checkbox].check-blue-dark:checked+label:before {
+	background-size: 22px;
+	border: 1px solid #1351f9;
+}
+
+/* 버튼 */
+.btn-purple, .btn-purple>a {
+	text-align: center;
+}
+.btn-purple input {
+	font-size: 18px;
+}
+
+.btn-purple-dark>a, .btn-purple>a {
+	background: #1351f9;
+}
+
+.btn-purple>a {
+	display: block;
+	height: 60px;
+	line-height: 60px;
+	border-radius: 30px;
+	font-size: 18px;
+	color: #fff;
+}
+
+.btn-purple, .btn-purple>a {
+	text-align: center;
+}
+
+/* 조인라인 */
+.login ul.join-find {
+	margin: 20px auto 50px;
+	font-size: 0;
+	text-align: center;
+}
+
+.login ul.join-find li {
+	display: inline-block;
+	position: relative;
+}
+
+.login ul.join-find li:first-child a {
+	padding-left: 0;
+}
+
+.login ul.join-find li a {
+	display: block;
+	padding: 0 14px;
+	font-size: 14px;
+	color: #a5a5a5;
+}
+
+.login ul.join-find li:after {
+	position: absolute;
+	top: 50%;
+	right: 0;
+	content: "";
+	transform: translateY(-50%);
+	width: 1px;
+	height: 16px;
+	background-color: #a5a5a5;
+}
+
+/* 다른 계정 */
+.or-bar-box {
+	position: relative;
+}
+
+.or-bar-left {
+	left: 0;
+}
+
+.or-bar {
+	position: absolute;
+	top: 14px;
+	display: block;
+	width: 21%;
+	border-bottom: 1px solid #2f2f2f;
+}
+
+.login-box-hd {
+	text-align: center;
+	font-weight: 400;
+	font-size: 18px;
+	line-height: 28px;
+	color: #a5a5a5;
+}
+
+.or-bar-right {
+	right: 0;
+}
+
+/* sns 아이콘 */
+.login-sns {
+	margin: 0 auto;
+    padding: 40px 0;
+    font-size: 0;
+    text-align: center;
+}
+
+.kakao {
+	background-color: #ffec00;
+}
+
+.login-sns-each {
+	display: inline-block;
+	width: 60px;
+	height: 60px;
+	border-radius: 100px;
+}
+
+.kakao a {
+	color: #212121;
+}
+
+.login-sns-each a {
+	display: block;
+	padding: 14px 0 14px 0;
+	color: #fff;
+	text-align: center;
+	font-size: 18px;
+	line-height: 20px;
+}
+
+.icon-sns {
+	display: inline-block;
+	vertical-align: middle;
+	width: 32px;
+	height: 32px;
+}
+
+.icon-kakao {
+	background-image: url("/img/kakao.png");
+}
+
+.icon-facebook, .icon-kakao {
+	background-repeat: no-repeat;
+	background-size: 32px 32px;
+}
+
+.a11y-hidden {
+	overflow: hidden;
+	clip: rect(1px, 1px, 1px, 1px);
+	position: absolute;
+	width: 1px;
+	height: 1px;
+}
+
+.login-sns li+li {
+	margin-left: 12px;
+}
+
+.tworld {
+	background-color: #fff;
+}
+
+.tworld a {
+	color: #212121;
+}
+
+.icon-tworld {
+	background-image: url("/img/tmap.png");
+}
+
+.icon-naver, .icon-tworld {
+	background-repeat: no-repeat;
+	background-size: 32px 32px;
+}
+
+.naver {
+	background-color: #23b909;
+}
+
+/* 하단 안내 */
+
+.sns-exclamation {
+    position: relative;
+    padding-left: 12px;
+    margin-top: 10px;
+    font-size: 14px;
+    line-height: 22px;
+    color: #717171;
+}
+
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.icon-naver {
+	background-image: url("/img/naver.png");
+}
+
+.facebook {
+	background-color: #3b5998;
+}
+
+.icon-facebook {
+	background-image: url("/img/facebook.png");
+}
+
+.apple {
+	background-color: #fff;
+}
+
+.icon-apple {
+	background-image: url("/img/apple.png");
+	background-repeat: no-repeat;
+	background-size: 32px 32px;
+}
+
+/* 안내문구 */
+
+.sns-exclamation {
+    position: relative;
+    padding-left: 12px;
+    margin-top: 10px;
+    font-size: 14px;
+    line-height: 22px;
+    color: #717171;
+}
+
+.sns-exclamation:before {
+    position: absolute;
+    top: 3px;
+    left: 0;
+    content: "*";
+}
+
+.sns-exclamation span {
+    display: block;
+}

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>웨이비 (Wavvy)</title>
+</head>
+
+<body>
+
+	<header th:fragment="headerFragment" class="header">
+		<div class="header-nav">
+			<div class="wrap">
+				<ul class="nav">
+					<li><a th:if="${session.loginId == null}" href="login_form">로그인</a></li>
+					<li th:unless="${session.loginId == null}" class="dropdown">
+							<a th:text="${session.loginId}" class="dropbtn_icon"><button class="dropbtn"></button></a>
+						<div class="dropdown-content">
+							<div class="info-img">
+								<img src="https://img.wavve.com/service30/profile/0.png"
+									alt="파란 파도">
+							</div>
+							<ul class="dropdown-info">
+								<li><a th:text="${session.loginId}"> 님</a></li>
+								<li><a th:href="@{/myPage}">회원정보</a></li>
+								<li><a th:if="${session.loginId == 'admin'}" th:href="@{/contentWriteForm}">컨텐츠 추가</a></li>
+								<li><a>성인 콘텐츠 수정</a></li>
+								<li><a>알림함</a></li>
+								<li><a th:unless="${session.loginId == null}" href="logout">로그아웃</a></li>
+							</ul>
+						</div>
+					</li>
+					<li><a href="">이용권</a></li>
+					<li><a href="#">웨이브온</a></li>
+					<li><a href="#">이벤트</a></li>
+					<li><a href="#">고객센터</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div>
+			<div class="header-gnb">
+				<h1 class="logo">
+					<a th:href="@{/}"><img src="/img/logo.png" alt="logo"></a>
+				</h1>
+				<nav id="menu" class="gnb-left">
+					<ul>
+						<li ><a th:href="@{/}"  class="on">홈</a></li>
+						<li class="dropdown">
+							<button class="dropbtn">
+								<span class="dropbtn_icon">카테고리</span>
+							</button>
+
+							<div class="dropdown-content">
+								<ul>
+									<li><a>전체 카테고리 보기</a></li>
+									<li><hr></li>
+									<li><a th:href="@{/moreContent(contentCategory=popularity)}" class="scrollto">추천 프로그램</a></li>
+									<li><a th:href="@{/moreContent(contentCategory='drama')}" class="scrollto">드라마</a></li>
+									<li><a th:href="@{/moreContent(contentCategory='entertainment')}" class="scrollto">예능</a></li>
+									<li><a th:href="@{/moreContent(contentCategory='movie')}" class="scrollto">영화</a></li>
+									<li><a th:href="@{/moreContent(contentCategory='moviePlus')}" class="scrollto">영화플러스</a></li>
+									<li><a th:href="@{/moreContent(contentCategory='sereis')}" class="scrollto">해외시리즈</a></li>
+									<li><a th:href="@{/moreContent(contentCategory='original')}" class="scrollto">ORIGINAL</a></li>
+									<li><a th:href="@{/moreContent(contentCategory='classic')}" class="scrollto">CLASSIC</a></li>
+								</ul>
+							</div>
+
+						</li>
+						<li><a href="#" class="">LIVE</a></li>
+						<li><a href="#" class="">MY</a></li>
+						<li><a th:href="@{/board}" class="board-btn">게시판</a></li>
+					</ul>
+				</nav>
+				<button id="show" type="button" class="btn-search">
+					<span>검색하기</span>
+				</button>
+
+
+
+
+			</div>
+
+			<div class="modal-mask" id="searchPop">
+				<section class="modal-wrapper">
+					<button type="button" id="search-popup-close"
+						class="popup-close ir"></button>
+					<div class="modal-container">
+						<button class="pop-header-btn">태그로 검색하기</button>
+						<div class="sh-pop-body">
+							<div>
+								<div class="sh-pop-sub-tit">
+									<span tabindex="0">실시간 인기검색어</span>
+								</div>
+								<div class="search-popup-scroll">
+									<ol class="sh-pop-list01">
+										<li><a href="#"><span class="popup-rank">1</span>
+												동상이몽2_너는 내 운명</a></li>
+										<li><a href="#"><span class="popup-rank">2</span> 미남당</a></li>
+										<li><a href="#"><span class="popup-rank">3</span> 런닝맨</a></li>
+										<li><a href="#"><span class="popup-rank">4</span>
+												안싸우면 다행이야</a></li>
+										<li><a href="#"><span class="popup-rank">5</span>
+												빅마우스</a></li>
+										<li><a href="#"><span class="popup-rank">6</span> 미운
+												우리 새끼</a></li>
+										<li><a href="#"><span class="popup-rank">7</span>
+												멧돼지사냥</a></li>
+										<li><a href="#"><span class="popup-rank">8</span>
+												황금가면</a></li>
+										<li><a href="#"><span class="popup-rank">9</span>
+												무엇이든 물어보살</a></li>
+										<li><a href="#"><span class="popup-rank">10</span> 개는
+												훌륭하다</a></li>
+									</ol>
+								</div>
+							</div>
+						</div>
+						<form action="/searchContent" method="get">
+						<div class="sh-pop-header">
+							<div slot="pop-header">
+								<div class="sh-pop-input-wrap">
+									<label for="search-ip" class="dsn"></label> <input
+										type="text" placeholder="검색어를 입력해 주세요" id="keyword" name="keyword"
+										autocomplete="off" class="sh-pop-input" th:onkeyup="enterkey(keyword)">
+								</div>
+							</div>
+						</div>
+						</form>
+						<div class="sh-pop-body">
+							<!---->
+							<!---->
+						</div>
+						<div class="sh-pop-footer">
+							<div>
+								<div class="search-popup-scroll-gradation"></div>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+	</header>
+
+
+
+
+
+</body>
+</html>

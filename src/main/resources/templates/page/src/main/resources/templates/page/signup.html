@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/default_layout}">
+<head>
+<meta charset="UTF-8">
+<title>wavvy(웨이비)-회원가입</title>
+</head>
+
+<link rel="stylesheet" type="text/css" href="/css/signup.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400&display=swap"
+	rel="stylesheet">
+	<link rel="shortcut icon" href="https://www.wavve.com/favicon.ico">
+<body>
+
+
+
+	<!-- tabindex tab누를시 -1 값은 해당 범위 지정 x -->
+	<!-- label for : input id 값과 연동 사용 -->
+<div   layout:fragment="content" class="body">
+
+	<div class="member">
+		<div class="join member-layout">
+			<div class=step-bar>
+				<span class="gradation-blue">스텝바</span>
+			</div>
+			<div class="common-box">
+				<h2 class="join-hd">
+					<span>간단한 회원가입</span>
+					만으로
+					<br>
+					<span>wavvy를 즐길 수 </span>
+					있어요!
+				</h2>
+				<div class="signuptop">
+					<form action="join" method="post">
+							<ul class="join-input-box">
+								<li><input type="text"
+										placeholder="wavvy ID" name="userId" class="input-style01" maxlength="10" required >
+									<p class="login-error-gray" id="id-error-alert">아이디를
+										입력해주세요.</p></li>
+								<li><input type="password"
+										placeholder="wavvy PASSWORD" name="userPw"
+										class="input-style01" maxlength="20" required>
+									<p class="login-error-gray" id="id-error-alert">비밀번호를
+										입력해주세요.</p></li>
+								<li><input type="email"
+										placeholder="wavvy@example.com" name="userEmail"
+										class="input-style01" maxlength="50" required>
+									<p class="login-error-gray" id="id-error-alert" >이메일을
+										입력해주세요.</p></li>
+								<li><input type="tel"
+										placeholder="전화번호를 입력해주세요." name="userPhoneNum" class="input-style01" maxlength="20" required>
+									<p class="login-error-gray" id="id-error-alert">전화번호를
+										입력해주세요.</p></li>
+							</ul>
+							<div class="btn-wavvy-join">
+								<a><input type="submit" value="wavvy 회원가입"></a>
+							</div>
+							<div class="join-box">
+					<div class="or-bar-box">
+						<span class="or-bar or-bar-left"></span>
+						<h2 tabindex="0" class="login-box-hd">또는 다른 서비스 계정으로 가입</h2>
+						<span class="or-bar or-bar-right"></span>
+					</div>
+					<div class="login-sns">
+						<ul>
+							<li class="login-sns-each kakao"><a href="#">
+							<img src="https://member.wavve.com/images/member/ico-common-kakao.png" alt="카카오로 로그인">
+							</a></li>
+							<li class="login-sns-each tworld"><a href="#">
+							<img src="https://member.wavve.com/images/member/ico-common-tworld.png" alt="T아이디로 로그인">
+										</a></li>
+							<li class="login-sns-each naver"><a href="#">
+							<img src="https://member.wavve.com/images/member/ico-common-naver.png" alt="네이버로 로그인">
+										</a>
+							</li>
+							<li class="login-sns-each facebook"><a href="#">
+							<img src="https://member.wavve.com/images/member/ico-common-facebook.png" alt="페이스북으로 로그인">
+										</a></li>
+							<li class="login-sns-each apple"><a href="#">
+							<img src="https://member.wavve.com/images/member/ico-common-apple.png" alt="Apple ID로 로그인">
+										</a></li>
+						</ul>
+					</div>
+					<p class="sns-exclamation">
+						<span>SNS계정으로 간편하게 가입하여 서비스를 이용하실 수 있습니다.</span>
+						<span>기존 POOQ 계정 또는 wavvy 계정과는 연동되지 않으니 이용에 참고하세요.</span>
+					</p>
+				</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	</div>
+</body>
+</html>

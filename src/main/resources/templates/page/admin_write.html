@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/default_layout}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+
+<link rel="stylesheet" type="text/css" href="/css/admin_write.css">
+<body>
+
+
+
+
+
+	<div layout:fragment="content" class="top-padding">
+		<div class="wrap" id="g-contents">
+			<div class="admin-body">
+				<div class="admin-top">
+					<h4>wavvy 등록</h4>
+					<p>영상 작성페이지</p>
+				</div>
+				<form action="writeContent"  method="post" enctype="multipart/form-data">
+					<div class="admin-table-wrap">
+						<table class="admin-table">
+							<caption class="blind"></caption>
+							<colgroup>
+								<col width="280">
+								<col>
+							</colgroup>
+							<tbody>
+
+
+								<tr>
+									<th scope="row">구분</th>
+									<td colspan="4"><label for="admin-type" class="blind"></label>
+										<select id="admin-type" name="contentCategory">
+											<option value="drama">드라마</option>
+											<option value="entertainment">예능</option>
+											<option value="movie">영화</option>
+											<option value="moviePlus">영화플러스</option>
+											<option value="sereis">해외시리즈</option>
+											<option value="original">ORIGINAL</option>
+											<option value="classic">CLASSIC</option>
+											<option value="popularity">추천프로그램</option>
+											<option value="main">메인슬라이드</option>
+
+									</select></td>
+								</tr>
+								<tr>
+									<th>제목</th>
+									<td colspan="4"><input type="text" maxlength="50"
+										placeholder="제목을 입력해 주세요" class="admin-input1" name="contentTitle"
+										required=""></td>
+								</tr>
+								<tr>
+									<th>회차정보</th>
+									<td colspan="4"><textarea maxlength="500" class="admin-table-textarea01" name="contentEpPlot"
+											placeholder="회차 줄거리"></textarea></td>
+
+								</tr>
+								<tr>
+									<th rowspan="2"></th>
+									<th>회차</th>
+									<th>방영일</th>
+									<th>재생시간</th>
+									<th>연령</th>
+								</tr>
+								<tr>
+
+									<td><input maxlength="50" type="text" class="admin-input2" name="contentEp"></td>
+									<td><input maxlength="50" type="text" class="admin-input2" name="contentDate"></td>
+									<td><input maxlength="50" type="text" class="admin-input2" name="contentRunning"></td>
+									<td><input maxlength="50" type="text" class="admin-input2" name="contentAge"></td>
+								</tr>
+								<tr>
+									<th>방송 소개</th>
+									<td colspan="4"><textarea maxlength="500" class="admin-table-textarea02" name="contentEpTotal"
+											placeholder="방송 소개"></textarea></td>
+								</tr>
+
+								<tr>
+									<th rowspan="2"></th>
+									<th scope="col">개요</th>
+									<th>출연진</th>
+									<th>감독</th>
+									<th>작가</th>
+								</tr>
+								<tr>
+
+									<td><input maxlength="50" type="text" class="admin-input2" name="contentCategorySub"></td>
+									<td><input maxlength="50" type="text" class="admin-input2" name="contentCast"></td>
+									<td><input maxlength="50" type="text" class="admin-input2" name="contentDirector"></td>
+									<td><input maxlength="50" type="text" class="admin-input2" name="contentWriter"></td>
+								</tr>
+								<tr>
+									<th>이미지</th>
+									<td colspan="4"><input maxlength="500" type="file"
+										placeholder="이미지 url을 입력해주세요" class="admin-input1" name="imgFile"
+										id="name" required=""></td>
+								</tr>
+								<tr>
+									<th>영상</th>
+									<td colspan="4"><input maxlength="500" type="file" 
+										placeholder="영상 url을 입력해주세요" class="admin-input1" name="videoFile"
+										id="name"></td>
+								</tr>
+
+							</tbody>
+						</table>
+					</div>
+					<div class="admin-btn-wrap">
+						<ul>
+							<li><a th:href="@{/}" class="admin-cancel">취소</a></li>
+							<li><input type="submit" class="admin-submit" value="등록"></li>
+						</ul>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+
+
+</body>
+</html>
