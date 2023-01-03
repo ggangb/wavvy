@@ -32,6 +32,7 @@
 <li>CSS</li>
 <li>Thymeleaf</li>
 <li>SpringBoot</li>
+<li>MySql</li>
 
 <br>
 <br>
@@ -43,7 +44,7 @@
 </div>
 <hr>
 <li>Eclipse</li>
-<li>MySql</li>
+
 
 
 
