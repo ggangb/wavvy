@@ -216,6 +216,11 @@ public class BoardService {
 		}
 		
 	}
+	
+	public List<ContentVO> searchContent(String keyword) {
+		List<ContentVO> content = dao.searchContent(keyword);
+		return content;
+	}
 	public BoardVO read(int boardNum,String loginId) {
 		BoardVO board = dao.select(boardNum);
 		
@@ -310,6 +315,9 @@ public class BoardService {
 			return false;
 		}
 	}
+	
+	
+	
 	
 		
 }

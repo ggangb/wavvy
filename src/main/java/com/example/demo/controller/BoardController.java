@@ -260,4 +260,15 @@ public class BoardController {
 		return mv;
 	}
 	
+	@RequestMapping("/searchContent")
+	public ModelAndView searchContent(String keyword) {
+		ModelAndView mv = new ModelAndView();
+		
+
+		mv.addObject("content", service.searchContent(keyword));
+		mv.setViewName("page/search_content_list");
+		
+		return mv;
+	}
+	
 }

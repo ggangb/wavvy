@@ -19,6 +19,7 @@ public interface BoardMapper {
 	public List<BoardVO> selectList(@Param("startRow")int startRow, @Param("count")int count);
 	public BoardVO select(int boardNum);
 	public ContentVO selectContent(@Param("contentEp")int contentEp, @Param("contentTitle")String contentTitle);
+	public List<ContentVO> searchContent(@Param("keyword") String keyword);
 	public BoardVO prevBoard(int boardNum);
 	public BoardVO nextBoard(int boardNum);
 	public int updateReadCount(int boardNum);

@@ -60,6 +60,11 @@ public class BoardDao {
 		BoardMapper mapper = session.getMapper(BoardMapper.class);
 		return mapper.selectContent(contentEp, contentTitle);
 	}
+	
+	public List<ContentVO> searchContent(String keyword) {
+		BoardMapper mapper = session.getMapper(BoardMapper.class);
+		return mapper.searchContent(keyword);
+	}
 	public BoardVO select(int boardNum) {
 		BoardMapper mapper = session.getMapper(BoardMapper.class);
 		return mapper.select(boardNum);

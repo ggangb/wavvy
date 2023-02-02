@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/default_layout}">
+<head>
+<meta charset="UTF-8">
+</head>
+
+
+<link rel="stylesheet" type="text/css" href="/css/content_list.css">
+<body>
+
+	<main layout:fragment="content" id="contents">
+		<div class="list-view">
+			<div class="list-sub-menu">
+				<div id="g-container">
+					<div class="page-top">
+						<div class="page-top-inner-wrap">
+							<h1 tabindex="0" class="page-title">검색결과</h1>
+						</div>
+					</div>
+					<div class="filter-wrap">
+						<div class="filter-item">
+							<span><label><select><option
+											data-adult="n" value="&amp;orderby=new">최신순</option>
+										<option data-adult="n" value="&amp;orderby=viewtime">
+											인기순</option>
+										<option data-adult="n" value="&amp;orderby=title">
+											가나다순</option></select></label></span>
+						</div>
+					</div>
+				</div>
+				<div class="list-view-detail">
+					<h1 th:if="${#lists.isEmpty(content)}"  tabindex="0" class="page-title">검색결과가 없습니다.</h1>
+					<div th:each="contentVO : ${content}" class="thumb portrait" cell-type="band_14">
+						<a th:href="@{contentRead(contentEp=${contentVO.contentEp}, contentTitle=${contentVO.contentTitle}, contentNum=${contentVO.contentNum})}">
+						<div class="thumb-image">
+								<ul class="badge-list">
+									<li class="left-top-area"><ul></ul></li>
+									<li class="right-top-area"></li>
+								</ul>
+								<img
+									th:src="${contentVO.contentImg}"
+									alt="" aria-hidden="true" class="thumb-img"/>
+								
+
+								
+							</div></a>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</main>
+
+
+</body>
+</html>

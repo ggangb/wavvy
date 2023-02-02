@@ -6,38 +6,38 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 
 <mapper namespace="com.example.demo.repository.mapper.UserMapper">
 	<insert id="insert" parameterType = "vo.UserVO">
-		INSERT INTO USER(USER_ID,USER_PASSWORD,USER_EMAIL,USER_PHONENUM)
+		INSERT INTO user(USER_ID,USER_PASSWORD,USER_EMAIL,USER_PHONENUM)
 		VALUES(#{userId},#{userPw},#{userEmail},#{userPhoneNum})
 	</insert>
 	
 	<select id="selectUserNum" resultType="int">
-		SELECT COUNT(USER_ID) FROM USER WHERE USER_ID=#{userId} AND USER_PASSWORD=#{userPw}
+		SELECT COUNT(USER_ID) FROM user WHERE USER_ID=#{userId} AND USER_PASSWORD=#{userPw}
 	</select>
 	
 	<select id="selectUser" parameterType="String" resultMap="userResultMap">
-		SELECT * FROM USER WHERE USER_ID=#{userId}
+		SELECT * FROM user WHERE USER_ID=#{userId}
 	</select>
 	
 	<select id="selectCheckId" resultType="int">
-		SELECT COUNT(*) FROM USER WHERE USER_ID=#{userId}
+		SELECT COUNT(*) FROM user WHERE USER_ID=#{userId}
 	</select>
 	
 	<select id="userselect" parameterType="int"
 		resultMap="userResultMap">
-		SELECT * FROM USER WHERE USER_NUM=#{userNum}
+		SELECT * FROM user WHERE USER_NUM=#{userNum}
 	</select>
 	
 	<select id="select" parameterType="int"
 		resultMap="userResultMap">
-		SELECT * FROM USER WHERE USER_NUM=#{userNum}
+		SELECT * FROM user WHERE USER_NUM=#{userNum}
 	</select>
 
 	<delete id="userdelete" parameterType="int">
-		DELETE FROM USER WHERE USER_NUM=#{userNum}
+		DELETE FROM user WHERE USER_NUM=#{userNum}
 	</delete>
 
 	<update id="userupdate" parameterType="vo.UserVO">
-		UPDATE USER SET USER_PASSWORD=#{userPw},
+		UPDATE user SET USER_PASSWORD=#{userPw},
 		USER_PHONENUM=#{userPhoneNum},USER_EMAIL=#{userEmail} WHERE
 		USER_NUM=#{userNum}
 	</update>
