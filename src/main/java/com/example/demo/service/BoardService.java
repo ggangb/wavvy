@@ -72,6 +72,30 @@ public class BoardService {
 		return new BoardPageVO(boardList,currentPage,startPage,endPage,totalPage);
 	}
 	
+	public BoardPageVO searchBoardPage(int currentPage, String keyword) {
+		int totalCount = dao.searchBoardCount(keyword);
+		
+		int totalPage = totalCount/COUNT_PER_PAGE;
+		
+		if(totalCount%COUNT_PER_PAGE!=0) {
+			totalPage++;
+		}
+		
+		int startPage = (currentPage-1)/10*10+1;
+		
+		int endPage = startPage +9;
+		
+		if(totalPage < endPage) {
+			endPage = totalPage;
+		}
+		
+		int startRow = (currentPage-1)*COUNT_PER_PAGE;
+		
+		List<BoardVO> boardList=dao.searchBoard(startRow, COUNT_PER_PAGE, keyword);
+		
+		return new BoardPageVO(boardList,currentPage,startPage,endPage,totalPage);
+	}
+	
 	public BoardPageVO makeBoardPageNormal(int currentPage) {
 		int totalCount = dao.selectNormalCount();
 		

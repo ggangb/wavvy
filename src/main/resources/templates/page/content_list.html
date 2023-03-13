@@ -40,7 +40,7 @@
 				
 				<div class="list-view-detail">
 					<div th:each="contentVO : ${moreContent.contentList}" class="thumb portrait" cell-type="band_14">
-						<a th:href="@{contentRead(contentEp=${contentVO.contentEp}, contentTitle=${contentVO.contentTitle}, contentNum=${contentVO.contentNum})}">
+						<a th:if="${session.loginId != null}" th:href="@{contentRead(contentEp=${contentVO.contentEp}, contentTitle=${contentVO.contentTitle}, contentNum=${contentVO.contentNum})}">
 						<div class="thumb-image">
 								<ul class="badge-list">
 									<li class="left-top-area"><ul></ul></li>
@@ -53,6 +53,22 @@
 
 								
 							</div></a>
+							
+							<a th:if="${session.loginId == null}" href="login_check">
+						<div class="thumb-image">
+								<ul class="badge-list">
+									<li class="left-top-area"><ul></ul></li>
+									<li class="right-top-area"></li>
+								</ul>
+								<img
+									th:src="${contentVO.contentImg}"
+									alt="" aria-hidden="true" class="thumb-img"/>
+								
+
+								
+							</div></a>
+							
+							
 					</div>
 				</div>
 				<div class="paging-type01">

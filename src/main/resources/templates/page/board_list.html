@@ -30,11 +30,12 @@
 						</li>
 					</ul>
 					<div class="table02-wrap">
-						<form class="board-search">
+						<form action="/searchBoard" method="get" class="board-search">
 							<fieldset>
-								<label> <input type="text" placeholder="검색어를 입력하세요.">
+								<label> <input type="text" placeholder="검색어를 입력하세요."
+								 id="keyword" name="keyword" th:onkeyup="enterkey(keyword)">
 								</label>
-								<button type="button" class="board-search-btn">검색</button>
+								<button type="submit" class="board-search-btn">검색</button>
 							</fieldset>
 						</form>
 
@@ -48,8 +49,11 @@
 								</tr>
 							</thead>
 							<tbody>
-							<tr th:if="${#lists.isEmpty(boardPage.boardList)}">
+							<tr th:if="${#lists.isEmpty(boardPage.boardList)} and ${#httpServletRequest.requestURI != '/searchBoard'}">
 				<td colspan="5">작성된 게시글이 존재하지 않습니다.</td>
+				</tr>
+				<tr th:if="${#lists.isEmpty(boardPage.boardList)} and ${#httpServletRequest.requestURI == '/searchBoard'}">
+				<td colspan="5">검색 결과가 존재하지 않습니다.</td>
 				</tr>
 								<tr th:if="${!#lists.isEmpty(boardPage.boardList)}"
 								th:each="boardVO : ${boardPage.boardList}">

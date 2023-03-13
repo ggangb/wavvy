@@ -13,18 +13,16 @@
 				<ul class="nav">
 					<li><a th:if="${session.loginId == null}" href="login_form">로그인</a></li>
 					<li th:unless="${session.loginId == null}" class="dropdown">
-							<a th:text="${session.loginId}" class="dropbtn_icon"><button class="dropbtn"></button></a>
+							<a th:if="${session.loginId != null}" th:text="${#strings.substring(session.loginId,0,15)}" class="dropbtn_icon"><button class="dropbtn"></button></a>
 						<div class="dropdown-content">
 							<div class="info-img">
 								<img src="https://img.wavve.com/service30/profile/0.png"
 									alt="파란 파도">
 							</div>
 							<ul class="dropdown-info">
-								<li><a th:text="${session.loginId}"> 님</a></li>
-								<li><a th:href="@{/myPage}">회원정보</a></li>
+								<li><a th:if="${session.loginId != null}" th:text="${#strings.substring(session.loginId,0,15)}"> 님</a></li>
+								<li><a th:if="${session.loginId != null}" th:href="@{/myPage}">회원정보</a></li>
 								<li><a th:if="${session.loginId == 'admin'}" th:href="@{/contentWriteForm}">컨텐츠 추가</a></li>
-								<li><a>성인 콘텐츠 수정</a></li>
-								<li><a>알림함</a></li>
 								<li><a th:unless="${session.loginId == null}" href="logout">로그아웃</a></li>
 							</ul>
 						</div>
@@ -67,8 +65,14 @@
 
 						</li>
 						<li><a href="#" class="">LIVE</a></li>
-						<li><a href="#" class="">MY</a></li>
-						<li><a th:href="@{/board}" class="board-btn">게시판</a></li>
+						<li>
+						<a th:if="${session.loginId != null}" th:href="@{/myPage}" class="">MY</a>
+						<a th:if="${session.loginId == null}" href="login_check" class="">MY</a>
+						</li>
+						<li>
+						<a th:if="${session.loginId != null}" th:href="@{/board}" class="board-btn">게시판</a>
+						<a th:if="${session.loginId == null}" href="login_check" class="board-btn">게시판</a>
+						</li>
 					</ul>
 				</nav>
 				<button id="show" type="button" class="btn-search">

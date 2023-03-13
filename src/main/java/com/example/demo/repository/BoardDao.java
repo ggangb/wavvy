@@ -42,6 +42,11 @@ public class BoardDao {
 		return mapper.selectNormalCount();
 	}
 	
+	public int searchBoardCount(String keyword) {
+		BoardMapper mapper = session.getMapper(BoardMapper.class);
+		return mapper.searchBoardCount(keyword);
+	}
+	
 	public int selectMainCount() {
 		BoardMapper mapper = session.getMapper(BoardMapper.class);
 		return mapper.selectMainCount();
@@ -81,6 +86,11 @@ public class BoardDao {
 	public List<BoardVO> selectList(int startRow, int count) {
 		BoardMapper mapper = session.getMapper(BoardMapper.class);
 		return mapper.selectList(startRow, count);
+	}
+	
+	public List<BoardVO> searchBoard(int startRow, int count, String keyword) {
+		BoardMapper mapper = session.getMapper(BoardMapper.class);
+		return mapper.searchBoard(startRow, count, keyword);
 	}
 	
 	public List<BoardVO> selectListLike(int startRow, int count) {

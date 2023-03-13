@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -22,19 +23,28 @@ public class BoardController {
 	@Autowired
 	private BoardService service;
 	
-	@RequestMapping(value = {"/board" , "/board_like","/board_normal"}, method=RequestMethod.GET)
-	public ModelAndView board(@RequestParam(defaultValue="1")int page, HttpServletRequest request) {
+	@RequestMapping("/login_check")
+	public String logincheck() {
+		return "page/login_check";
+	}
+	
+	
+	@RequestMapping(value = {"/board" , "/board_like","/board_normal","/searchBoard"}, method=RequestMethod.GET)
+	public ModelAndView board(@RequestParam(defaultValue="1")int page, HttpServletRequest request, String keyword) {
 		ModelAndView mv = new ModelAndView();
 		if(request.getServletPath().equals("/board")) {
 			mv.addObject("boardPage", service.makeBoardPage(page));
 			mv.setViewName("page/board_list");
 		} else if(request.getServletPath().equals("/board_like")) {
 			mv.addObject("boardPage", service.makeBoardPageL(page));
-			mv.setViewName("page/board_list_like");
+			mv.setViewName("page/board_list");
 		} else if(request.getServletPath().equals("/board_normal")) {
 			mv.addObject("boardPage", service.makeBoardPageNormal(page));
-			mv.setViewName("page/board_list_normal");
+			mv.setViewName("page/board_list");
 			
+		} else if(request.getServletPath().equals("/searchBoard")) {
+			mv.addObject("boardPage", service.searchBoardPage(page, keyword));
+			mv.setViewName("page/board_list");
 		}
 		return mv;
 	}
@@ -167,6 +177,7 @@ public class BoardController {
 		}
 		
 	}
+	
 	
 	@RequestMapping(value = "/writeContent", method = RequestMethod.POST)
 	public String writeContent(ContentVO content, HttpSession session, MultipartFile imgFile,MultipartFile videoFile) throws Exception {

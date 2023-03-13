@@ -13,6 +13,7 @@ public interface BoardMapper {
 	public int selectTotalCount();
 	public int selectLikeCount();
 	public int selectNormalCount();
+	public int searchBoardCount(String keyword);
 	public int selectMainCount();
 	public int selectMoreCount(String contentCategory);
 	public int selectContentListCount(String contentTitle);
@@ -29,6 +30,7 @@ public interface BoardMapper {
 	public int delete(int boardNum);
 	public int deleteContent(int contentNum);
 	public List<BoardVO> selectListLike(@Param("startRow")int startRow, @Param("count")int count);
+	public List<BoardVO> searchBoard(@Param("startRow")int startRow, @Param("count")int count, @Param("keyword")String keyword);
 	public List<BoardVO> selectListNormal(@Param("startRow")int startRow, @Param("count")int count);
 	public List<ContentVO> selectMainList(@Param("startRow")int startRow, @Param("count")int count);
 	public List<ContentVO> selectMoreList(@Param("startRow")int startRow, @Param("count")int count, @Param("contentCategory")String contentCategory);
