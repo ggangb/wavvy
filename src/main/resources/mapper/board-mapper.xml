@@ -146,8 +146,32 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		CONTENT_CATEGORY=#{contentCategory}, CONTENT_title=#{contentTitle}, CONTENT_WRITER=#{contentWriter},
 		CONTENT_EP=#{contentEp}, CONTENT_DATE=#{contentDate}, CONTENT_RUNNING=#{contentRunning}, CONTENT_AGE=#{contentAge},
 		CONTENT_EP_PLOT=#{contentEpPlot}, CONTENT_CAST=#{contentCast}, CONTENT_EP_TOTAL=#{contentEpTotal},
-		CONTENT_CATEGORY_SUB=#{contentCategorySub}, CONTENT_DIRECTOR=#{contentDirector},CONTENT_IMG=#{contentImg}, CONTENT_VIDEO=#{contentVideo},
-		CONTETN_VIEW=#{contentView},CONTENT_NAME=#{contentName}, CONTENT_IMGNAME = #{contentImgName} WHERE CONTENT_NUM=#{contentNum}
+		CONTENT_CATEGORY_SUB=#{contentCategorySub}, CONTENT_DIRECTOR=#{contentDirector}, CONTENT_IMG=#{contentImg}, CONTENT_VIDEO=#{contentVideo},
+		CONTETN_VIEW=#{contentView},CONTENT_NAME=#{contentName},CONTENT_IMGNAME=#{contentImgName} WHERE CONTENT_NUM=#{contentNum}
+	</update>
+	<update id="updateContentImg" parameterType="vo.ContentVO">
+		UPDATE content SET
+		CONTENT_CATEGORY=#{contentCategory}, CONTENT_title=#{contentTitle}, CONTENT_WRITER=#{contentWriter},
+		CONTENT_EP=#{contentEp}, CONTENT_DATE=#{contentDate}, CONTENT_RUNNING=#{contentRunning}, CONTENT_AGE=#{contentAge},
+		CONTENT_EP_PLOT=#{contentEpPlot}, CONTENT_CAST=#{contentCast}, CONTENT_EP_TOTAL=#{contentEpTotal},
+		CONTENT_CATEGORY_SUB=#{contentCategorySub}, CONTENT_DIRECTOR=#{contentDirector}, CONTENT_IMG=#{contentImg},
+		CONTETN_VIEW=#{contentView},CONTENT_IMGNAME=#{contentImgName} WHERE CONTENT_NUM=#{contentNum}
+	</update>
+	<update id="updateContentVideo" parameterType="vo.ContentVO">
+		UPDATE content SET
+		CONTENT_CATEGORY=#{contentCategory}, CONTENT_title=#{contentTitle}, CONTENT_WRITER=#{contentWriter},
+		CONTENT_EP=#{contentEp}, CONTENT_DATE=#{contentDate}, CONTENT_RUNNING=#{contentRunning}, CONTENT_AGE=#{contentAge},
+		CONTENT_EP_PLOT=#{contentEpPlot}, CONTENT_CAST=#{contentCast}, CONTENT_EP_TOTAL=#{contentEpTotal},
+		CONTENT_CATEGORY_SUB=#{contentCategorySub}, CONTENT_DIRECTOR=#{contentDirector}, CONTENT_VIDEO=#{contentVideo},
+		CONTETN_VIEW=#{contentView},CONTENT_NAME=#{contentName} WHERE CONTENT_NUM=#{contentNum}
+	</update>
+	<update id="updateContentImgFile" parameterType="int">
+		UPDATE content SET
+		CONTENT_IMGNAME=null ,CONTENT_IMG=null WHERE CONTENT_NUM=#{contentNum}
+	</update>
+	<update id="updateContentVideoFile" parameterType="int">
+		UPDATE content SET
+		CONTENT_NAME=null ,CONTENT_VIDEO=null WHERE CONTENT_NUM=#{contentNum}
 	</update>
 	
 	<delete id="delete" parameterType="int">

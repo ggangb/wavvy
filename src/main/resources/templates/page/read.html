@@ -24,7 +24,7 @@
 								<a th:if="${session.loginId=='admin'}" th:href="@{/updateContentForm(contentEp=${content.contentEp},contentTitle=${content.contentTitle})}"><button type="button" class="update-button">수정</button></a>
 							</div>
 							<div>
-								<a th:if="${session.loginId=='admin'}" th:href="@{/deleteContent(contentNum=${content.contentNum})}"><button type="button" class="delete-button">삭제</button></a>
+								<a th:if="${session.loginId=='admin'}" th:href="@{/deleteContent(contentNum=${content.contentNum},videoName=${content.contentName},imgName=${content.contentImgName})}"><button type="button" class="delete-button">삭제</button></a>
 							</div>
 						</div>
 						<p class="program-info-box">

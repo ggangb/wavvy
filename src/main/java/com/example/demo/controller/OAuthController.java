@@ -24,7 +24,7 @@ public class OAuthController {
 	public ModelAndView kakaoCallback(@RequestParam String code, HttpSession session) {
 		System.out.println(code);
 		String token = service.getKakaoAccessToken(code);
-		session.setAttribute("loginId", "[kakao]"+service.loginKakao(token));
+		session.setAttribute("loginId", "[kakao]"+service.loginKakao(token).substring(0, 5));
 //		session.setAttribute("kakaoId", service.loginKakao(token));
 		ModelAndView mv = new ModelAndView();
 		

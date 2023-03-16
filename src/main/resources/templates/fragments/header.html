@@ -13,14 +13,14 @@
 				<ul class="nav">
 					<li><a th:if="${session.loginId == null}" href="login_form">로그인</a></li>
 					<li th:unless="${session.loginId == null}" class="dropdown">
-							<a th:if="${session.loginId != null}" th:text="${#strings.substring(session.loginId,0,15)}" class="dropbtn_icon"><button class="dropbtn"></button></a>
+							<a th:if="${session.loginId != null}" th:text="${session.loginId}" class="dropbtn_icon"><button class="dropbtn"></button></a>
 						<div class="dropdown-content">
 							<div class="info-img">
 								<img src="https://img.wavve.com/service30/profile/0.png"
 									alt="파란 파도">
 							</div>
 							<ul class="dropdown-info">
-								<li><a th:if="${session.loginId != null}" th:text="${#strings.substring(session.loginId,0,15)}"> 님</a></li>
+								<li><a th:if="${session.loginId != null}" th:text="${session.loginId}"> 님</a></li>
 								<li><a th:if="${session.loginId != null}" th:href="@{/myPage}">회원정보</a></li>
 								<li><a th:if="${session.loginId == 'admin'}" th:href="@{/contentWriteForm}">컨텐츠 추가</a></li>
 								<li><a th:unless="${session.loginId == null}" href="logout">로그아웃</a></li>

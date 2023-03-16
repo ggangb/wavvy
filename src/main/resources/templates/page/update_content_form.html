@@ -67,7 +67,6 @@
 									<th>연령</th>
 								</tr>
 								<tr>
-
 									<td><input th:value="${content.contentEp}" type="text" class="admin-input2" name="contentEp"></td>
 									<td><input th:value="${content.contentDate}" type="text" class="admin-input2" name="contentDate"></td>
 									<td><input th:value="${content.contentRunning}" type="text" class="admin-input2" name="contentRunning"></td>
@@ -87,7 +86,6 @@
 									<th>작가</th>
 								</tr>
 								<tr>
-
 									<td><input th:value="${content.contentCategorySub}" type="text" class="admin-input2" name="contentCategorySub"></td>
 									<td><input th:value="${content.contentCast}" type="text" class="admin-input2" name="contentCast"></td>
 									<td><input th:value="${content.contentDirector}" type="text" class="admin-input2" name="contentDirector"></td>
@@ -95,15 +93,26 @@
 								</tr>
 								<tr>
 									<th>이미지</th>
-									<td colspan="4"><input maxlength="500" type="file"
+									
+									<td colspan="4">
+									<span class="original-img" th:if="${content.contentImgName != null}" th:text="${content.contentImgName}"></span>
+									<input th:if="${content.contentImgName == null}" maxlength="500" type="file"
 										placeholder="이미지 url을 입력해주세요" class="admin-input1" name="imgFile"
-										id="name"></td>
+										id="name">
+									<input th:if="${content.contentImgName != null}" type="submit" value="X" th:formaction="@{/updateContentFile(contentNum=${content.contentNum},contentEp=${content.contentEp},fileName=${content.contentImgName},contentTitleName=${content.contentTitle})}" >
+										</td>
 								</tr>
 								<tr>
 									<th>영상</th>
-									<td colspan="4"><input maxlength="500" type="file" 
+									<td colspan="4">
+									<span class="original-img" th:if="${content.contentName != null}" th:text="${content.contentName}"></span>
+									<input th:if="${content.contentName == null}" maxlength="500" type="file" 
 										placeholder="영상 url을 입력해주세요" class="admin-input1" name="videoFile"
-										id="name"></td>
+										id="name">
+									<input th:if="${content.contentName != null}" type="submit" value="X" th:formaction="@{/updateContentFile(contentNum=${content.contentNum},contentEp=${content.contentEp},fileName=${content.contentName},contentTitleName=${content.contentTitle})}" >
+										<a th:href="@{/}">X</a>
+										</td>
+										
 								</tr>
 
 							</tbody>
@@ -114,7 +123,7 @@
 							<li><a th:href="@{/}" class="admin-cancel">취소</a></li>
 							<li><input type="hidden" name="contentNum"
 				 th:value="${content.contentNum}"></li>
-							<li><input type="submit" class="admin-submit" value="등록"></li>
+							<li><input type="submit" class="admin-submit" value="수정"></li>
 						</ul>
 					</div>
 				</form>

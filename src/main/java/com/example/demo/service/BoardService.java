@@ -1,9 +1,12 @@
 package com.example.demo.service;
 
 import java.io.File;
+import java.net.URLDecoder;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -206,8 +209,9 @@ public class BoardService {
 	
 	public int writeContent(ContentVO content, String loginId, MultipartFile imgFile,MultipartFile videoFile) throws Exception {
 		
-		String projectPath = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\files";
-		String projectPath1 = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\contentImg";
+		
+		String projectPath = System.getProperty("user.dir") + "/files";
+		String projectPath1 = System.getProperty("user.dir") + "/contentImg";
 		
 		UUID uuid = UUID.randomUUID();
 		
@@ -291,9 +295,37 @@ public class BoardService {
 	}
 	
 	public boolean updateContent(ContentVO content, String loginId, MultipartFile imgFile,MultipartFile videoFile) throws Exception {
-		
-		String projectPath = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\files";
-		String projectPath1 = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\contentImg";
+		if(videoFile == null) {
+			String projectPath1 = "./contentImg";
+			UUID uuid = UUID.randomUUID();
+			String fileName = uuid + "_" + imgFile.getOriginalFilename();
+			File saveFile = new File(projectPath1, fileName);
+			imgFile.transferTo(saveFile);
+			content.setContentImgName(fileName);
+			content.setContentImg("/contentImg/"+fileName);
+			if(loginId != null && loginId.equals("admin")) {
+				dao.updateContentImg(content);
+				return true;
+			} else {
+				return false;
+			}
+		} else if(imgFile == null) {
+			String projectPath = "./files";
+			UUID uuid = UUID.randomUUID();
+			String fileName1 = uuid + "_" + videoFile.getOriginalFilename();
+			File saveFile1 = new File(projectPath, fileName1);
+			videoFile.transferTo(saveFile1);
+			content.setContentName(fileName1);
+			content.setContentVideo("/files/"+fileName1);
+			if(loginId != null && loginId.equals("admin")) {
+				dao.updateContentVideo(content);
+				return true;
+			} else {
+				return false;
+			}
+		} else {
+			String projectPath = "./files";
+			String projectPath1 = "./contentImg";
 		
 		UUID uuid = UUID.randomUUID();
 		
@@ -318,6 +350,27 @@ public class BoardService {
 		} else {
 			return false;
 		}
+		}
+	}
+	public boolean updateContentFile(String fileName, int contentNum, String loginId) {
+		String projectPath = "./files";
+		String projectPath1 = "./contentImg";
+		
+		File file = new File(projectPath + fileName);
+		File file1 = new File(projectPath1 + fileName);
+		if(file.exists() && loginId.equals("admin"))  {
+			file.delete();
+			dao.updateContentVideoFile(contentNum);
+			return true;
+		} else if(file1.exists() && loginId.equals("admin")) {
+			file1.delete();
+			dao.updateContentImgFile(contentNum);
+			return true;
+		} else {
+			return false;
+		}
+		
+		
 	}
 	
 	public boolean delete(int boardNum, String loginId) {
@@ -331,8 +384,18 @@ public class BoardService {
 		
 	}
 	
-	public boolean deleteContent(int contentNum, String loginId) {
+	public boolean deleteContent(int contentNum, String loginId, String videoName, String imgName) {
 		if((loginId != null && loginId.equals("admin"))) {
+			String projectPath = "./files";
+			String projectPath1 = "./contentImg";
+			File file = new File(projectPath + videoName);
+			File file1 = new File(projectPath1 + imgName);
+			if(file.exists() && loginId.equals("admin") && file1.exists()) {
+				file.delete();
+				file1.delete();
+			} else {
+				System.out.println("삭제실패");
+			}
 			dao.deleteContent(contentNum);
 			return true;
 		} else {

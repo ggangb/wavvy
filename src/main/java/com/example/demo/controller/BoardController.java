@@ -207,7 +207,6 @@ public class BoardController {
 	public ModelAndView updateContentForm(int contentEp, String contentTitle) {
 		
 		ContentVO content = service.readContent(contentEp, contentTitle);
-		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("content", content);
 		mv.setViewName("page/update_content_form");
@@ -231,6 +230,24 @@ public class BoardController {
 		
 	}
 	
+	@RequestMapping(value = "/updateContentFile" , method = RequestMethod.POST)
+	public ModelAndView updateContentFile(int contentNum,int contentEp, String fileName, HttpSession session, String contentTitleName) {
+		String loginId = (String)session.getAttribute("loginId");
+		System.out.println(loginId);
+		System.out.println(fileName);
+		boolean result = service.updateContentFile(fileName, contentNum, loginId);
+		System.out.println(result);
+		ContentVO content = service.readContent(contentEp, contentTitleName);
+		ModelAndView mv = new ModelAndView();
+		if(result) {
+			mv.addObject("content", content);
+			mv.setViewName("page/update_content_form");
+		} else {
+			mv.setViewName("page/update_content_fail");
+		}
+		return mv;
+		
+	}
 	@RequestMapping(value = "/updateContent", method = RequestMethod.POST)
 	public ModelAndView updateContent(ContentVO content, HttpSession session, MultipartFile imgFile,MultipartFile videoFile) throws Exception{
 		String loginId = (String)session.getAttribute("loginId");
@@ -260,10 +277,10 @@ public class BoardController {
 	}
 	
 	@RequestMapping("/deleteContent")
-	public ModelAndView deleteContent(int contentNum, HttpSession session) {
+	public ModelAndView deleteContent(int contentNum, HttpSession session, String videoName, String imgName) {
 		String loginId = (String)session.getAttribute("loginId");
 		
-		boolean result = service.deleteContent(contentNum, loginId);
+		boolean result = service.deleteContent(contentNum, loginId, videoName, imgName);
 		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("result", result);

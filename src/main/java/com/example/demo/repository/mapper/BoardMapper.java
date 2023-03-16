@@ -25,8 +25,12 @@ public interface BoardMapper {
 	public BoardVO nextBoard(int boardNum);
 	public int updateReadCount(int boardNum);
 	public int updateContentCount(int contentNum);
+	public int updateContentImgFile(int contentNum);
+	public int updateContentVideoFile(int contentNum);
 	public int update(BoardVO board);
 	public int updateContent(ContentVO content);
+	public int updateContentVideo(ContentVO content);
+	public int updateContentImg(ContentVO content);
 	public int delete(int boardNum);
 	public int deleteContent(int contentNum);
 	public List<BoardVO> selectListLike(@Param("startRow")int startRow, @Param("count")int count);

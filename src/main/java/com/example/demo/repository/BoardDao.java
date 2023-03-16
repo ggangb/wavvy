@@ -127,6 +127,15 @@ public class BoardDao {
 		return mapper.updateContentCount(contentNum);
 	}
 	
+	public int updateContentImgFile(int contentNum) {
+		BoardMapper mapper = session.getMapper(BoardMapper.class);
+		return mapper.updateContentImgFile(contentNum);
+	}
+	public int updateContentVideoFile(int contentNum) {
+		BoardMapper mapper = session.getMapper(BoardMapper.class);
+		return mapper.updateContentVideoFile(contentNum);
+	}
+	
 	public int update(BoardVO board) {
 		BoardMapper mapper = session.getMapper(BoardMapper.class);
 		return mapper.update(board);
@@ -135,6 +144,14 @@ public class BoardDao {
 	public int updateContent(ContentVO content) {
 		BoardMapper mapper = session.getMapper(BoardMapper.class);
 		return mapper.updateContent(content);
+	}
+	public int updateContentVideo(ContentVO content) {
+		BoardMapper mapper = session.getMapper(BoardMapper.class);
+		return mapper.updateContentVideo(content);
+	}
+	public int updateContentImg(ContentVO content) {
+		BoardMapper mapper = session.getMapper(BoardMapper.class);
+		return mapper.updateContentImg(content);
 	}
 	
 	public int delete(int boardNum) {
