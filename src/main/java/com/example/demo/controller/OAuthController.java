@@ -24,13 +24,26 @@ public class OAuthController {
 	public ModelAndView kakaoCallback(@RequestParam String code, HttpSession session) {
 		System.out.println(code);
 		String token = service.getKakaoAccessToken(code);
-		session.setAttribute("loginId", "[kakao]"+service.loginKakao(token).substring(0, 5));
+		session.setAttribute("loginId", "[Kakao]"+service.loginKakao(token).substring(0, 5));
 //		session.setAttribute("kakaoId", service.loginKakao(token));
 		ModelAndView mv = new ModelAndView();
 		
 		mv.setViewName("page/login_success");
 		return mv;
 			
+		
+	}
+	
+	@ResponseBody
+	@GetMapping("/naver")
+	public ModelAndView naverCallback(@RequestParam String code, @RequestParam String state, HttpSession session) {
+		System.out.println(code);
+		String token = service.getNaverAccessToken(code, state);
+		service.loginNaver(token);
+		session.setAttribute("loginId", "[Naver]"+service.loginNaver(token));
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("page/login_success");
+		return mv;
 		
 	}
 	

@@ -296,7 +296,7 @@ public class BoardService {
 	
 	public boolean updateContent(ContentVO content, String loginId, MultipartFile imgFile,MultipartFile videoFile) throws Exception {
 		if(videoFile == null) {
-			String projectPath1 = System.getProperty("user.dir") + "./contentImg";
+			String projectPath1 = System.getProperty("user.dir") + "/contentImg";
 			UUID uuid = UUID.randomUUID();
 			String fileName = uuid + "_" + imgFile.getOriginalFilename();
 			File saveFile = new File(projectPath1, fileName);
@@ -310,7 +310,7 @@ public class BoardService {
 				return false;
 			}
 		} else if(imgFile == null) {
-			String projectPath = System.getProperty("user.dir") + "./files";
+			String projectPath = System.getProperty("user.dir") + "/files";
 			UUID uuid = UUID.randomUUID();
 			String fileName1 = uuid + "_" + videoFile.getOriginalFilename();
 			File saveFile1 = new File(projectPath, fileName1);
@@ -324,8 +324,8 @@ public class BoardService {
 				return false;
 			}
 		} else {
-			String projectPath = System.getProperty("user.dir") + "./files";
-			String projectPath1 = System.getProperty("user.dir") + "./contentImg";
+			String projectPath = System.getProperty("user.dir") + "/files";
+			String projectPath1 = System.getProperty("user.dir") + "/contentImg";
 		
 		UUID uuid = UUID.randomUUID();
 		
@@ -353,11 +353,13 @@ public class BoardService {
 		}
 	}
 	public boolean updateContentFile(String fileName, int contentNum, String loginId) {
-		String projectPath = System.getProperty("user.dir") + "./files";
-		String projectPath1 = System.getProperty("user.dir") + "./contentImg";
+		String projectPath = System.getProperty("user.dir") + "/files";
+		String projectPath1 = System.getProperty("user.dir") + "/contentImg";
 		
-		File file = new File(projectPath + fileName);
-		File file1 = new File(projectPath1 + fileName);
+		File file = new File(projectPath +"/"+fileName);
+		File file1 = new File(projectPath1 +"/"+ fileName);
+		System.out.println(file);
+		System.out.println(file1);
 		if(file.exists() && loginId.equals("admin"))  {
 			file.delete();
 			dao.updateContentVideoFile(contentNum);
@@ -368,7 +370,7 @@ public class BoardService {
 			return true;
 		} else {
 			return false;
-		}
+	}
 		
 		
 	}
@@ -386,8 +388,8 @@ public class BoardService {
 	
 	public boolean deleteContent(int contentNum, String loginId, String videoName, String imgName) {
 		if((loginId != null && loginId.equals("admin"))) {
-			String projectPath = System.getProperty("user.dir") + "./files";
-			String projectPath1 = System.getProperty("user.dir") + "./contentImg";
+			String projectPath = System.getProperty("user.dir") + "/files";
+			String projectPath1 = System.getProperty("user.dir") + "/contentImg";
 			File file = new File(projectPath + videoName);
 			File file1 = new File(projectPath1 + imgName);
 			if(file.exists() && loginId.equals("admin") && file1.exists()) {

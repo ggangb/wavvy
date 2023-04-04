@@ -51,12 +51,12 @@
 									<th>제목</th>
 									<td colspan="4"><input  th:value="${content.contentTitle}" type="text" 
 										placeholder="제목을 입력해 주세요" class="admin-input1" name="contentTitle"
-										required=""></td>
+										required></td>
 								</tr>
 								<tr>
 									<th>회차정보</th>
 									<td colspan="4"><textarea th:text="${content.contentEpPlot}" class="admin-table-textarea01" name="contentEpPlot"
-											placeholder="회차 줄거리"></textarea></td>
+											placeholder="회차 줄거리" required></textarea></td>
 
 								</tr>
 								<tr>
@@ -67,10 +67,10 @@
 									<th>연령</th>
 								</tr>
 								<tr>
-									<td><input th:value="${content.contentEp}" type="text" class="admin-input2" name="contentEp"></td>
-									<td><input th:value="${content.contentDate}" type="text" class="admin-input2" name="contentDate"></td>
-									<td><input th:value="${content.contentRunning}" type="text" class="admin-input2" name="contentRunning"></td>
-									<td><input th:value="${content.contentAge}" type="text" class="admin-input2" name="contentAge"></td>
+									<td><input th:value="${content.contentEp}" type="text" class="admin-input2" name="contentEp" required></td>
+									<td><input th:value="${content.contentDate}" type="text" class="admin-input2" name="contentDate" required></td>
+									<td><input th:value="${content.contentRunning}" type="text" class="admin-input2" name="contentRunning" required></td>
+									<td><input th:value="${content.contentAge}" type="text" class="admin-input2" name="contentAge" required></td>
 								</tr>
 								<tr>
 									<th>방송 소개</th>
@@ -86,10 +86,10 @@
 									<th>작가</th>
 								</tr>
 								<tr>
-									<td><input th:value="${content.contentCategorySub}" type="text" class="admin-input2" name="contentCategorySub"></td>
-									<td><input th:value="${content.contentCast}" type="text" class="admin-input2" name="contentCast"></td>
-									<td><input th:value="${content.contentDirector}" type="text" class="admin-input2" name="contentDirector"></td>
-									<td><input th:value="${content.contentWriter}" type="text" class="admin-input2" name="contentWriter"></td>
+									<td><input th:value="${content.contentCategorySub}" type="text" class="admin-input2" name="contentCategorySub" required></td>
+									<td><input th:value="${content.contentCast}" type="text" class="admin-input2" name="contentCast" required></td>
+									<td><input th:value="${content.contentDirector}" type="text" class="admin-input2" name="contentDirector" required></td>
+									<td><input th:value="${content.contentWriter}" type="text" class="admin-input2" name="contentWriter" required></td>
 								</tr>
 								<tr>
 									<th>이미지</th>
@@ -110,7 +110,6 @@
 										placeholder="영상 url을 입력해주세요" class="admin-input1" name="videoFile"
 										id="name">
 									<input th:if="${content.contentName != null}" type="submit" value="X" th:formaction="@{/updateContentFile(contentNum=${content.contentNum},contentEp=${content.contentEp},fileName=${content.contentName},contentTitleName=${content.contentTitle})}" >
-										<a th:href="@{/}">X</a>
 										</td>
 										
 								</tr>
