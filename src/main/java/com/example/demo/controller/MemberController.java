@@ -64,12 +64,12 @@ public class MemberController {
 		ModelAndView mv = new ModelAndView();
 
 		String loginId = (String) session.getAttribute("loginId");
-		if (loginId != null && loginId.length() > 0 && !loginId.contains("kakao")) {
+		if (loginId != null && loginId.length() > 0 && !loginId.contains("kakao") && !loginId.contains("Naver") ) {
 			System.out.println(!loginId.contains("kakao"));
 			UserVO user = service.getUserInfo(loginId);
 			mv.addObject("userInfo", user);
 			mv.setViewName("page/my_page");
-		} else {
+		} else  {
 			mv.setViewName("page/kakao_login");
 		}
 		return mv;

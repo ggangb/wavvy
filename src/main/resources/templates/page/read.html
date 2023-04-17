@@ -35,12 +35,13 @@
 								
 						</p>
 						<div class="icon-box">
-							<ul>
-								<li class="icon-item"><button type="button">
+							<ul>			
+								<li class="icon-item"><a th:href="@{/download(fileName=${content.contentName})}"><button type="button">
 										<img
 											src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAPKADAAQAAAABAAAAPAAAAACL3+lcAAAD9UlEQVRoBe2aUUhTURjHdZuMMMsCC+qtDH0oiJCCoKAgqaVJGuIUigqSojB87cGyoIegQqJee8htbeaL5WMGvZSteiyjlx5KI2KjqIlT1++TDda86fHeu81L58Lh3Hvu933n///+55577tlKSvShM6AzYDUDgUDgiRSrccz4e8w4WfVJpVI+qzHM+rvMOjrVTxN2qnKquLXCqplyqp1W2KnKqeLWCqtmyql2WmGnKqeKWyusmimn2mmFnaqcKm6tsGqmnGr33ylsaYsnvS9VUVlZ2eDz+X7kU/WRkRHP+Ph4kO2h6rKysl2tra1TZvqzqvAaAOyJxWIRAWQGgKrPxMREH30dKy0trcJnRtUv184SYa/X6wfAV4LWk/07ucHtuu7v7z8/Ozt7lniTkG5G3eIQbmlp+QThJkoCIJ0M8W67SGbiEPMA8W/LNfWpjo6O0cw9M7UlhaVDv9//ErInAEOVuhEKhZrMADHyCYfDNcQMU9wul+tqe3t70MhuKW2WCUtnZD1CdYnimpmZ6Yf0Dmm3ckB27fT09BAxKknmo7a2th4r8TK+thCWYGT/OtV9SjnP2xCAN3Ju6pAJELIRlN1CgDcVFRXHZQSZCpbjZBthiVtTU3MGYM8AuiGZTD6G9Mqc/pQuZQIkxn6Mx3kFHWlsbPyt5KhgZCvhurq6JECbIf2BvrejUoDrJfXBJHUBn078J91udxMz8mcFHsomSwKjEpXnOebxeA5j+x3gjcFg8KaKn9jw7NdT3Urbn+S5fZU+t62ynbAgQ5WPzKpHUXoK0l2odm4xxNjU8uzPzcj49ZK40GI+Zu7nhbAA4XX1nOp0GlQfhA6mz+dVMiOTmCHKam5G8L08z8imhrwRFnzM3A9ELYi4KQ8ZsltzcUej0TImuAHaqymvmaTm3um5dnZd55WwgIR0D6RlwbCKd7T8EL4+G/zY2JgsSfdh8wWyMkklsu/bfV5qd0CjeMPDw954PP4UlXdDbJR6Z9ruIvVt2hKUvQzlqJG/nW0FISyAeU6rGLovON2UIQBJ+QiQUdbGSAhn2vNZ531IZ8AzVL/xXm3gOp5pSz/bvYUiK/0WjLB0xnv1HaQPcfoTdZPU1yB7Re4V9WBiKdq/bOwgvhB+w10KhlrR/mVjB+GF8Bd0SNtBxmoMTdhqBpe7v1Z4uStkFZ9WODuDTO8FW3pm92vlfDHMhgqzCnovnbJbcY+XeC3r4BVWQBTKd3BwcB2Yu6Q/OBhuDRkuPNit6OZTboBsyd5SJ4v+Enb/C4XbdD+JxF9floZbS/8csnysb4a07AVvo8h2ablpJIVz/IWyb+nuLmt0+QbXh86AzoDOgM6AzsByzsAfaXFqlQHqlA0AAAAASUVORK5CYII="
 											alt="다운로드"><span class="icon-txt">다운로드</span>
-									</button></li>
+											
+									</button></a></li>
 								<li class="icon-item"><button type="button">
 										<img
 											src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8BAMAAADI0sRBAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAtUExURUdwTLW1taampqampqampqenp6mpqaenp6enp6ampqampqenp6ampqampqWlpUwcpcwAAAAOdFJOUwAKvuX0QBstTI/VdKReXGK2xgAAAaVJREFUOMvVVb9Lw0AUvmtt0tIOXaQUUZxUFIKDTmoQBBchCC6iUDo4FYfUP0CK4OJQKhTdHAS7NVh/rCJUdCuCkx0EkyvSWN/fYHIpTu+l4KQZ3hs+7u677/vehbF/9sWbKzNpElU0AJgn4YK4zbShRMFajTF+tkqdLPJejfQIOPXpV1UQ5KId2XQTh4feAwYEt+iHbNY6Dke+/Mohj4vSdH1SCRtF+Y3QK17PdVD4CCZytsmyUMHQPbhgccOZhi6GZmHNq7sG2BjvpNGVWg0fYrRjlm3SKVBaLq5Uxt+MV0UDRQMqL/CIGywvsgWT+JmBDLCEo1yKWO4R9ielBSmb/cbAQfYPCk949AYEtx971wwdGtzin5F7NdznsIEd0Z1G2LiPWuIk9FXQxGl/w80ilqYWPMmugcDMVx9gymtncK4LTEWlCvV0Ao6ZqqFjwq9hoewjCQeVkbdBDhC3LvELHIBc9zaOwzFXtv1Z4vpBrsaWcVh1ggATq7khvb27J8Rt+aQUg3o2d/wxLtikNVAvbhs10roNLwB2noT51dxi6W//kr4BBLeX2s6o8BkAAAAASUVORK5CYII="
